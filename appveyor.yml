@@ -10,7 +10,8 @@ build:
 platform:
   - x64
   - Win32
-  
+install:
+  - cmd: c:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\Common7\IDE\devenv.exe WickedEngine.sln /upgrade
 after_build:
   - cmd: move %APPVEYOR_BUILD_FOLDER%\%PLATFORM%\Release\Editor.exe %APPVEYOR_BUILD_FOLDER%\Editor
   - cmd: 7z a WickedEngineEditor.zip WickedEngine\shaders\ WickedEngine\fonts\ images\ models\ scripts\ shadercompilers\ Documentation\ *.txt *.md Editor\Editor.exe Editor\images\ Editor\sound\ Editor\*.ini Editor\*.ico Editor\*.lua
