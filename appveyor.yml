@@ -12,7 +12,7 @@ platform:
   - x64
   - Win32
 install:
-  - cmd: c:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\Common7\IDE\devenv.exe "WickedEngine.sln" /upgrade
+  - cmd: c:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\Common7\IDE\devenv.exe "WickedEngine/WickedEngine_SHARED.vcxitems" /upgrade
   - dir
 after_build:
   - cmd: move %APPVEYOR_BUILD_FOLDER%\%PLATFORM%\Release\Editor.exe %APPVEYOR_BUILD_FOLDER%\Editor
