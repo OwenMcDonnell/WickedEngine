@@ -4,16 +4,18 @@ branches:
   - master
 image: Visual Studio 2019
 configuration: Release
-build:
-  project: WickedEngine.sln
-  parallel: true
-  verbosity: minimal
+build_script:
+  - msbuild "C:\projects\wickedengine\WickedEngine.sln" /m /verbosity:minimal /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
+#build:
+ # project: WickedEngine.sln
+  #parallel: true
+  #verbosity: minimal
 platform:
   - x64
   - Win32
-install:
-  - cmd: c:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\Common7\IDE\devenv.exe "WickedEngine/WickedEngine_SHARED.vcxitems" /upgrade
-  - dir
+#install:
+ # - cmd: c:\"Program Files (x86)"\"Microsoft Visual Studio"\2019\Community\Common7\IDE\devenv.exe "WickedEngine/WickedEngine_SHARED.vcxitems" /upgrade
+  #- dir
 after_build:
   - cmd: move %APPVEYOR_BUILD_FOLDER%\%PLATFORM%\Release\Editor.exe %APPVEYOR_BUILD_FOLDER%\Editor
   - cmd: 7z a WickedEngineEditor.zip WickedEngine\shaders\ WickedEngine\fonts\ images\ models\ scripts\ shadercompilers\ Documentation\ *.txt *.md Editor\Editor.exe Editor\images\ Editor\sound\ Editor\*.ini Editor\*.ico Editor\*.lua
